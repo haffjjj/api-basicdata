@@ -4,7 +4,7 @@ header('Access-Control-Allow-Origin: *');
 require_once "../config.php";
 
 if(isset($_GET['id'])){
-    $core->table = "content_bab";
+    $core->table = "bab_content";
     $core->where = "WHERE id_bab = ?";
     $core->data = [$_GET['id']];
     

@@ -3,8 +3,8 @@ header('Access-Control-Allow-Origin: *');
 
 require_once "../config.php";
 
-$core->table = "materi_bab";
+$core->table = "bab_materi";
 
-echo json_encode($core->read(),TRUE);
+echo json_encode($core->read());
 
 ?>

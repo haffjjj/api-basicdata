@@ -26,12 +26,27 @@ class core extends config
 	public $table; //table
 	public $where = null; // WHERE exmpl = ?,?
 	public $data = null; // [?,?]
+	public $values = null; // [?,?]
+	public $option = null; //add custom sql
 
     public function read(){
-        $query = "SELECT * FROM $this->table $this->where";
+        $query = "SELECT * FROM $this->table $this->where $this->option";
 		$result = $this->connection->prepare($query);
 		$result->execute($this->data);
         return  $result->fetchAll();
+	}
+
+	public function count(){
+		$query = "SELECT * FROM $this->table $this->where";
+		$result = $this->connection->prepare($query);
+		$result->execute($this->data);
+        return  $result->rowCount();
+	}
+
+	public function insert(){
+		$query = "INSERT INTO $this->table VALUES($this->values)";
+		$result = $this->connection->prepare($query);
+		$result->execute($this->data);
 	}
 }
 
