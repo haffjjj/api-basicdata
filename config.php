@@ -23,6 +23,7 @@ class config
 class core extends config
 {
 
+	public $query = null; //custom read_query
 	public $table; //table
 	public $where = null; // WHERE exmpl = ?,?
 	public $data = null; // [?,?]
@@ -32,6 +33,12 @@ class core extends config
     public function read(){
         $query = "SELECT * FROM $this->table $this->where $this->option";
 		$result = $this->connection->prepare($query);
+		$result->execute($this->data);
+        return  $result->fetchAll();
+	}
+
+	public function read_query(){
+		$result = $this->connection->prepare($this->query);
 		$result->execute($this->data);
         return  $result->fetchAll();
 	}
@@ -48,6 +55,17 @@ class core extends config
 		$result = $this->connection->prepare($query);
 		$result->execute($this->data);
 	}
+
+	// public function getanswer(){
+	// 	$collumn = "a";
+
+	// 	$query = 'SELECT collumn FROM quiz where id = 1';
+	// 	$result = $this->connection->prepare($query);
+	// 	$result->bindColumn(1, $collumn);
+	// 	$result->execute();
+	// 	return $result->fetchAll();
+		
+	// } 
 }
 
 $core = new core();

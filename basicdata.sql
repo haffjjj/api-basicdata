@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 12 Nov 2017 pada 14.34
+-- Generation Time: 14 Nov 2017 pada 13.38
 -- Versi Server: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -84,6 +84,7 @@ INSERT INTO `bab_materi` (`id`, `imgpath`, `no`, `title`) VALUES
 
 CREATE TABLE `quiz` (
   `id` int(10) NOT NULL,
+  `id_level` int(10) NOT NULL,
   `quiz` text NOT NULL,
   `a` text NOT NULL,
   `b` text NOT NULL,
@@ -97,17 +98,38 @@ CREATE TABLE `quiz` (
 -- Dumping data untuk tabel `quiz`
 --
 
-INSERT INTO `quiz` (`id`, `quiz`, `a`, `b`, `c`, `d`, `e`, `answer`) VALUES
-(1, '<p><strong>Perhatikan data berikut !</strong></p>\r\n<ol>\r\n<li><em>Candidate Key</em></li>\r\n<li><em>Primary Key</em></li>\r\n<li>Secondary Key</li>\r\n<li><em>Alternate Key</em></li>\r\n<li><em>Foreign Key</em></li>\r\n<li>Master Key</li>\r\n</ol>\r\n<p>&nbsp;Yang termasuk dalam Macam macam Filed / attribute kunci adalah &hellip;</p>', '1, 2, 5, 6', '1, 2, 4, 5', '1, 2, 3, 4', '2, 3 , 4 , 5', '1, 2 , 3 , 6 ', 'b'),
-(2, '<p>Jika telah menetapkan bahwa tipe data untuk sebuah atribut adalah integer, maka kita hanya mungkin untuk menyimpan data angka yang bulat diantara angka...</p>', '-32.768 hingga 32.768.', '-32.786 hingga 32.768', '-32.678 hingga 32.768', '-32.678 hingga 32.768', '-32.768 hingga 32.786', 'a'),
-(3, '<p><strong>Perhatikan Data Berikut !</strong></p>\r\n<p>1) Model Entity&ndash;Relationship-diagram</p>\r\n<p>2) Menerapkan normalisasi terhadap struktur tabel yang telah diketahui</p>\r\n<p>3) Struktur diagram yang sesuai</p>\r\n<p>4) Ketepatan Tipedata</p>\r\n<p>Dalam merancang basis data dapat dilakukan melalui dua Pendekatan, ditunjukan dengan nomor &hellip;</p>', '1 dan 3', '2 dan 4', '2 dan 3', '1 dan 2', 'Semua benar', 'd'),
-(4, '<p>Jika telah menetapkan bahwa tipe data untuk sebuah atribut adalah integer, maka kita hanya mungkin untuk menyimpan data angka yang bulat diantara batas tertentu . Pengguna tidak mungkin untuk memasukkan data diluar batas nilai tersebut. untuk memasukkan data pecahan pengguna harus menggunakan data bertipe...</p>', 'String atau text', 'Float atau text', 'String atau float', 'Char atau text', 'Semua benar', 'a'),
-(5, '<p>Jika satu kunci kandidat berisi lebih dari satu atribute, maka biasanya disebut sebagai...</p>', 'Candidate Key ', 'Primary Key ', 'Foreign Key', 'Alternate Key ', 'Composite key', 'e'),
-(6, '<p><strong>Perhatikan data berikut !</strong></p>\r\n<ol>\r\n<li>Jika ada <em>dekomposisi</em> (penguraian) tabel, maka dekomposisinya harus dijamin aman (<em>Lossless&ndash;Join Decomposition</em>).</li>\r\n<li>Terpeliharanya ketergantungan fungsional pada saat perubahan data (<em>DependencyPreservation</em>).</li>\r\n<li>Tidak melanggar <em>Boyce&ndash;Code Normal Form</em> (BCNF)</li>\r\n<li>Tidak melanggar rule of third</li>\r\n</ol>\r\n<p>sebuah tabel dapat dikategorikan baik (<em>efisien</em>) atau normal, jika telah memenuhi beberapa kriteria, ditunjukan nomor &hellip;</p>', '1, 3, 4', '1, 2, 3, 4', '1, 2, 3', '2, 3, 4', 'Semua benar', 'c'),
-(7, '<p>&hellip;adalah satu atribute (atau satu set atribute) yang melengkapi satu relationship (hubungan) yang menunjukkan ke induknya.</p>\r\n<p>Yang tepat untuk mengisi titik titik diatas adalah&hellip;.</p>', 'Candidate Key', 'Primary Key', 'Foreign Key', 'Alternate Key', 'Composite key', 'c'),
-(8, '<p><em>...</em>adalah kunci kandidat yang tidak dipakai sebagai primary key. Kerap kali kunci alternatif dipakai sebagai kunci pengurutan dalam laporan.</p>\r\n<p>Yang tepat untuk mengisi titik titik diatas adalah&hellip;.</p>', 'Candidate Key ', 'Primary Key ', 'Foreign key', 'Alternate Key', 'Compsite Key', 'd'),
-(9, '<p>Dekomposisi yang benar terjadi jika tabel&ndash;tabel hasil dekomposisi kita gabungkan kembali dapat menghasilkan tabel awal sebelum didekomposisi. Dekomposisi yang benar semacam ini disebut..</p>', 'Lossless Join Composition atau Lossless Decomposition', 'Lossless Join Deposition atau Losless Composition', 'Lossless Join Decomposition atau Lossless Decomposition', 'DependencyPreservation', 'BoyceCode Normal Form', 'c'),
-(10, '<p><strong>Perhatikan Kasus dibawah ini untuk menjawab soal !</strong></p>\r\n<p>Pada tabel kuliah, ditetapkan tipe data untuk atribut sks adalah integer. Dengan begitu secara fisik kita dapat menyimpan nilai &ndash;1, 0 atau 100 untuk atribut sks. Tetapi kita mengetahui dengan pasti, bahwa nilai&ndash;nilai tersebut tidak pantas (<em>invalid</em>) untuk menjadi data pada atribut sks. Lalu nilai&ndash;nilai yangboleh (<em>valid</em>) untuk atribut sks adalah 1, 2, 3, 4 dan 5, maka dapat dikatakan, domain nilai untuk atribut sks adalah &hellip;</p>', '-1, 0 atau 100', '1,2,3,4 dan 5', '0 sampai 100', '-1, 0 , 1, 2, 3, 4, 5, 6', '0, 1, 2, 3 sampai 100', 'b');
+INSERT INTO `quiz` (`id`, `id_level`, `quiz`, `a`, `b`, `c`, `d`, `e`, `answer`) VALUES
+(1, 1, '<p><strong>Perhatikan data berikut !</strong></p>\r\n<ol>\r\n<li><em>Candidate Key</em></li>\r\n<li><em>Primary Key</em></li>\r\n<li>Secondary Key</li>\r\n<li><em>Alternate Key</em></li>\r\n<li><em>Foreign Key</em></li>\r\n<li>Master Key</li>\r\n</ol>\r\n<p>&nbsp;Yang termasuk dalam Macam macam Filed / attribute kunci adalah &hellip;</p>', '1, 2, 5, 6', '1, 2, 4, 5', '1, 2, 3, 4', '2, 3 , 4 , 5', '1, 2 , 3 , 6 ', 'b'),
+(2, 1, '<p>Jika telah menetapkan bahwa tipe data untuk sebuah atribut adalah integer, maka kita hanya mungkin untuk menyimpan data angka yang bulat diantara angka...</p>', '-32.768 hingga 32.768.', '-32.786 hingga 32.768', '-32.678 hingga 32.768', '-32.678 hingga 32.768', '-32.768 hingga 32.786', 'a'),
+(3, 1, '<p><strong>Perhatikan Data Berikut !</strong></p>\r\n<p>1) Model Entity&ndash;Relationship-diagram</p>\r\n<p>2) Menerapkan normalisasi terhadap struktur tabel yang telah diketahui</p>\r\n<p>3) Struktur diagram yang sesuai</p>\r\n<p>4) Ketepatan Tipedata</p>\r\n<p>Dalam merancang basis data dapat dilakukan melalui dua Pendekatan, ditunjukan dengan nomor &hellip;</p>', '1 dan 3', '2 dan 4', '2 dan 3', '1 dan 2', 'Semua benar', 'd'),
+(4, 1, '<p>Jika telah menetapkan bahwa tipe data untuk sebuah atribut adalah integer, maka kita hanya mungkin untuk menyimpan data angka yang bulat diantara batas tertentu . Pengguna tidak mungkin untuk memasukkan data diluar batas nilai tersebut. untuk memasukkan data pecahan pengguna harus menggunakan data bertipe...</p>', 'String atau text', 'Float atau text', 'String atau float', 'Char atau text', 'Semua benar', 'a'),
+(5, 1, '<p>Jika satu kunci kandidat berisi lebih dari satu atribute, maka biasanya disebut sebagai...</p>', 'Candidate Key ', 'Primary Key ', 'Foreign Key', 'Alternate Key ', 'Composite key', 'e'),
+(6, 1, '<p><strong>Perhatikan data berikut !</strong></p>\r\n<ol>\r\n<li>Jika ada <em>dekomposisi</em> (penguraian) tabel, maka dekomposisinya harus dijamin aman (<em>Lossless&ndash;Join Decomposition</em>).</li>\r\n<li>Terpeliharanya ketergantungan fungsional pada saat perubahan data (<em>DependencyPreservation</em>).</li>\r\n<li>Tidak melanggar <em>Boyce&ndash;Code Normal Form</em> (BCNF)</li>\r\n<li>Tidak melanggar rule of third</li>\r\n</ol>\r\n<p>sebuah tabel dapat dikategorikan baik (<em>efisien</em>) atau normal, jika telah memenuhi beberapa kriteria, ditunjukan nomor &hellip;</p>', '1, 3, 4', '1, 2, 3, 4', '1, 2, 3', '2, 3, 4', 'Semua benar', 'c'),
+(7, 1, '<p>&hellip;adalah satu atribute (atau satu set atribute) yang melengkapi satu relationship (hubungan) yang menunjukkan ke induknya.</p>\r\n<p>Yang tepat untuk mengisi titik titik diatas adalah&hellip;.</p>', 'Candidate Key', 'Primary Key', 'Foreign Key', 'Alternate Key', 'Composite key', 'c'),
+(8, 1, '<p><em>...</em>adalah kunci kandidat yang tidak dipakai sebagai primary key. Kerap kali kunci alternatif dipakai sebagai kunci pengurutan dalam laporan.</p>\r\n<p>Yang tepat untuk mengisi titik titik diatas adalah&hellip;.</p>', 'Candidate Key ', 'Primary Key ', 'Foreign key', 'Alternate Key', 'Compsite Key', 'd'),
+(9, 1, '<p>Dekomposisi yang benar terjadi jika tabel&ndash;tabel hasil dekomposisi kita gabungkan kembali dapat menghasilkan tabel awal sebelum didekomposisi. Dekomposisi yang benar semacam ini disebut..</p>', 'Lossless Join Composition atau Lossless Decomposition', 'Lossless Join Deposition atau Losless Composition', 'Lossless Join Decomposition atau Lossless Decomposition', 'DependencyPreservation', 'BoyceCode Normal Form', 'c'),
+(10, 1, '<p><strong>Perhatikan Kasus dibawah ini untuk menjawab soal !</strong></p>\r\n<p>Pada tabel kuliah, ditetapkan tipe data untuk atribut sks adalah integer. Dengan begitu secara fisik kita dapat menyimpan nilai &ndash;1, 0 atau 100 untuk atribut sks. Tetapi kita mengetahui dengan pasti, bahwa nilai&ndash;nilai tersebut tidak pantas (<em>invalid</em>) untuk menjadi data pada atribut sks. Lalu nilai&ndash;nilai yangboleh (<em>valid</em>) untuk atribut sks adalah 1, 2, 3, 4 dan 5, maka dapat dikatakan, domain nilai untuk atribut sks adalah &hellip;</p>', '-1, 0 atau 100', '1,2,3,4 dan 5', '0 sampai 100', '-1, 0 , 1, 2, 3, 4, 5, 6', '0, 1, 2, 3 sampai 100', 'b'),
+(12, 2, 'Test quiz 2', 'false', 'false', 'false', 'true', 'false', 'd');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `quiz_level`
+--
+
+CREATE TABLE `quiz_level` (
+  `id` int(10) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `content` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `quiz_level`
+--
+
+INSERT INTO `quiz_level` (`id`, `title`, `content`) VALUES
+(1, 'Level 1', 'Sangat Dasar'),
+(2, 'Level 2', 'Dewa');
 
 -- --------------------------------------------------------
 
@@ -117,6 +139,7 @@ INSERT INTO `quiz` (`id`, `quiz`, `a`, `b`, `c`, `d`, `e`, `answer`) VALUES
 
 CREATE TABLE `quiz_result` (
   `id` int(10) NOT NULL,
+  `id_quiz_level` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `score` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -125,18 +148,45 @@ CREATE TABLE `quiz_result` (
 -- Dumping data untuk tabel `quiz_result`
 --
 
-INSERT INTO `quiz_result` (`id`, `username`, `score`) VALUES
-(1, 'kamu', 0),
-(2, 'jondes', 10),
-(3, 'yuoo', 30),
-(4, 'panda', 10),
-(6, 'jondesss', 10),
-(7, 'hello', 20),
-(8, 'yoolo', 30),
-(9, 'hafiz', 10),
-(10, 'anik', 10),
-(11, 'jondessss', 10),
-(12, 'yoooooooo', 10);
+INSERT INTO `quiz_result` (`id`, `id_quiz_level`, `username`, `score`) VALUES
+(2, 1, 'jondes', 10),
+(3, 1, 'jondes', 10),
+(4, 1, 'helo', 0),
+(5, 1, 'helo', 10),
+(6, 2, 'jondes', 0),
+(7, 2, 'jondes', 100),
+(8, 1, 'hehe', 10),
+(9, 1, 'joo', 10),
+(10, 2, 'hellya', 0),
+(11, 2, 'muah', 100),
+(12, 1, 'jondes', 10),
+(13, 2, 'test', 100),
+(14, 1, 'jon', 10),
+(15, 1, 'jond', 10),
+(16, 2, 'hel', 100),
+(17, 2, 'hel', 100),
+(18, 1, 'jondes', 10),
+(19, 1, 'jondes', 20),
+(20, 2, 'testtemuah', 100),
+(21, 2, 'JON', 100),
+(22, 2, 'HELL', 0),
+(23, 1, 'helo', 0),
+(24, 2, 'jondd', 0),
+(25, 2, 'jonddy', 100),
+(26, 2, 'hello', 100),
+(27, 2, 'jondes', 100),
+(28, 2, 'k', 100),
+(29, 1, 'jondes', 10),
+(30, 1, 'jondes', 20),
+(31, 2, 'uh', 0),
+(32, 2, 'sd', 100),
+(33, 1, 'wef', 0),
+(34, 2, 'sdf', 0),
+(35, 2, 'sdf', 100),
+(36, 1, 'syafie', 10),
+(37, 2, 'jen', 100),
+(38, 1, 'hel', 10),
+(39, 1, 'jon', 0);
 
 --
 -- Indexes for dumped tables
@@ -159,13 +209,21 @@ ALTER TABLE `bab_materi`
 -- Indexes for table `quiz`
 --
 ALTER TABLE `quiz`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_level` (`id_level`);
+
+--
+-- Indexes for table `quiz_level`
+--
+ALTER TABLE `quiz_level`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `quiz_result`
 --
 ALTER TABLE `quiz_result`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_quiz_level` (`id_quiz_level`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -187,13 +245,19 @@ ALTER TABLE `bab_materi`
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `quiz_level`
+--
+ALTER TABLE `quiz_level`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `quiz_result`
 --
 ALTER TABLE `quiz_result`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -204,6 +268,18 @@ ALTER TABLE `quiz_result`
 --
 ALTER TABLE `bab_content`
   ADD CONSTRAINT `bab_content_ibfk_1` FOREIGN KEY (`id_bab`) REFERENCES `bab_materi` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `quiz`
+--
+ALTER TABLE `quiz`
+  ADD CONSTRAINT `quiz_ibfk_1` FOREIGN KEY (`id_level`) REFERENCES `quiz_level` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `quiz_result`
+--
+ALTER TABLE `quiz_result`
+  ADD CONSTRAINT `quiz_result_ibfk_1` FOREIGN KEY (`id_quiz_level`) REFERENCES `quiz` (`id_level`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

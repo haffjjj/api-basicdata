@@ -4,11 +4,17 @@ header('Access-Control-Allow-Origin: *');
 require_once "../config.php";
 
 $postdata = file_get_contents("php://input");
+
+// var_dump($postdata);
+// die;
+
 if(isset($postdata)){
 
     $post = json_decode($postdata,true);
 
     $core->table = "quiz";
+    $core->where = "WHERE id_level = ?";
+    $core->data = [$post['id']];
     $quiztotal =  $core->count();
     $quiz = $core->read();
 
@@ -35,8 +41,10 @@ if(isset($postdata)){
     }
 
     $core->table = "quiz_result";
-    $core->values = "?,?,?";
-    $core->data = ['',$post['username'],$score];
+    $core->where = null;
+    $core->data = null;
+    $core->values = "?,?,?,?";
+    $core->data = ['',$post['id'],$post['username'],$score];
     $core->insert();
 
     $result = [
@@ -53,5 +61,5 @@ else{
     echo 'ZRTHR Team 17';
 }
 
-// copyright jondescode
+// jondescode v1
 ?>
